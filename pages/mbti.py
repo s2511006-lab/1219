@@ -6,7 +6,7 @@ import os
 st.set_page_config(page_title="Global MBTI Dashboard", layout="wide")
 
 # 1. 파일 불러오기 (경로 문제 해결을 위한 로직 포함)
-FILE_NAME = 'countries.csv'
+FILE_NAME = 'countries (1).csv'
 
 @st.cache_data
 def load_data():
