@@ -9,7 +9,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# --- 1. 국가명 한글 매핑 데이터 ---
+# --- 1. 국가명 한글 매핑 데이터 (수정됨) ---
 def get_country_mapping():
     return {
         "Afghanistan": "아프가니스탄", "Albania": "알바니아", "Algeria": "알제리", "Andorra": "안도라", "Angola": "앙골라",
@@ -38,6 +38,7 @@ def get_country_mapping():
         "Monaco": "모나코", "Mongolia": "몽골", "Montenegro": "몬테네그로", "Morocco": "모로코", "Mozambique": "모잠비크",
         "Myanmar": "미얀마", "Namibia": "나미비아", "Nauru": "나우루", "Nepal": "네팔", "Netherlands": "네덜란드",
         "New Zealand": "뉴질랜드", "Nicaragua": "니카라과", "Niger": "니제르", "Nigeria": "나이지리아", "North Macedonia": "북마케도니아",
+        "Macedonia": "북마케도니아",  # 추가된 부분
         "Norway": "노르웨이", "Oman": "오만", "Pakistan": "파키스탄", "Palau": "팔라우", "Panama": "파나마",
         "Papua New Guinea": "파푸아뉴기니", "Paraguay": "파라과이", "Peru": "페루", "Philippines": "필리핀", "Poland": "폴란드",
         "Portugal": "포르투갈", "Qatar": "카타르", "Romania": "루마니아", "Russia": "러시아", "Rwanda": "르완다",
@@ -64,7 +65,7 @@ def load_data():
 
     # 국가 이름 한글 변환
     country_map = get_country_mapping()
-    df['Country'] = df['Country'].map(country_map).fillna(df['Country']) # 매핑 안 된 국가는 영어 그대로 유지
+    df['Country'] = df['Country'].map(country_map).fillna(df['Country'])
 
     # 기본 16가지 MBTI 유형 리스트
     mbti_types = [
@@ -124,7 +125,7 @@ if result is not None:
     if menu == "국가별 상세 분석":
         st.header("🏳️ 국가별 MBTI 성향 분석")
         
-        # 한국 찾기 (이제 이름이 '대한민국'으로 바뀜)
+        # 한국 찾기 (이름이 '대한민국'으로 바뀜)
         default_country = '대한민국'
         country_list = df['Country'].tolist()
         
